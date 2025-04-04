@@ -43,6 +43,8 @@ class AppContext {
     static let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     static let appBuild = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
     static let appStoreId = "6449701760"
+    
+    static let sentryDSN = "https://113aae56def7725dd3bcf4e9172df3dc@o4509079894360064.ingest.us.sentry.io/4509080071110656"
 
     static var appState: UIApplication.State = .inactive
     static let appLaunchedInBackground: Bool = UIApplication.shared.applicationState == .background

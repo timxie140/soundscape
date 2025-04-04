@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import AppCenterAnalytics
+//import AppCenterAnalytics
+import Sentry
 
 public class GDATelemetry {
     
@@ -21,7 +22,17 @@ public class GDATelemetry {
         }
         set {
             SettingsContext.shared.telemetryOptout = !newValue
-            Analytics.enabled = newValue
+//            Analytics.enabled = newValue
+            if newValue {
+                 SentrySDK.start { options in
+                     options.dsn = AppContext.sentryDSN
+                     options.debug = true
+                     options.sampleRate = SettingsContext.shared.telemetryOptout ? 1.0 : 0.0
+                     options.tracesSampleRate = 1.0
+                     options.enableAutoPerformanceTracing = true
+                     options.swiftAsyncStacktraces = true
+                 }
+             }
         }
     }
     
@@ -49,7 +60,13 @@ public class GDATelemetry {
             print("[TEL] Event tracked: \(eventName)" + (propertiesToSend.isEmpty ? "" : " \(propertiesToSend)"))
         }
         
-        Analytics.trackEvent(eventName, withProperties: propertiesToSend)
+//        Analytics.trackEvent(eventName, withProperties: propertiesToSend)
+        
+        let crumb = Breadcrumb()
+        crumb.message = eventName
+        crumb.type = "default"
+        crumb.data = propertiesToSend
+        SentrySDK.addBreadcrumb(crumb)
     }
     
 }

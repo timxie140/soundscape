@@ -46,14 +46,18 @@ class DynamicLaunchViewController: UIViewController {
         }
         
         if !testEnvironment, !UIDeviceManager.isSimulator {
-            AppCenter.start(withAppSecret: "<#Secret#>", services: [Analytics.self, Crashes.self])
-            Analytics.enabled = !SettingsContext.shared.telemetryOptout
-            Crashes.enabled = !SettingsContext.shared.telemetryOptout
+//            AppCenter.start(withAppSecret: "<#Secret#>", services: [Analytics.self, Crashes.self])
+//            Analytics.enabled = !SettingsContext.shared.telemetryOptout
+//            Crashes.enabled = !SettingsContext.shared.telemetryOptout
             
             if !SettingsContext.shared.telemetryOptout {
                 SentrySDK.start { options in
-                    options.dsn = "<Your DSN here>"
-                    options.debug = false // Set to true only for local debugging
+                    options.dsn = AppContext.sentryDSN
+                    options.debug = true
+                    options.sampleRate = 1.0
+                    options.tracesSampleRate = 1.0
+                    options.enableAutoPerformanceTracing = true
+                    options.swiftAsyncStacktraces = true
                 }
             }
         }
