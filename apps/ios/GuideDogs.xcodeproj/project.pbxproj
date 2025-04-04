@@ -365,6 +365,7 @@
 		568480931CBC9CEE004B4227 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480921CBC9CEE004B4227 /* SettingsViewController.swift */; };
 		568480981CBD6A19004B4227 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480971CBD6A19004B4227 /* Colors.swift */; };
 		568480A41CBDA685004B4227 /* POITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568480A31CBDA685004B4227 /* POITableViewCell.swift */; };
+		606B9C242DA062CE00E25164 /* Sentry in Frameworks */ = {isa = PBXBuildFile; productRef = 606B9C232DA062CE00E25164 /* Sentry */; };
 		620118CB24AAB489004B0380 /* LocationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620118C724AAB489004B0380 /* LocationAction.swift */; };
 		620118CC24AAB489004B0380 /* LocationActionAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620118C824AAB489004B0380 /* LocationActionAlert.swift */; };
 		620118CD24AAB489004B0380 /* LocationActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620118C924AAB489004B0380 /* LocationActionDelegate.swift */; };
@@ -1606,6 +1607,7 @@
 				281BCBFF262638290031298D /* RealmSwift in Frameworks */,
 				28F1ECE2262505DC00E964C0 /* Realm in Frameworks */,
 				2866A7C12625013400EBA2D8 /* DZNEmptyDataSet in Frameworks */,
+				606B9C242DA062CE00E25164 /* Sentry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4514,6 +4516,7 @@
 				281BCBFE262638290031298D /* RealmSwift */,
 				283B0306264B03920092F74F /* SDWebImageSwiftUI */,
 				91172A722AD8D56D00E6E8E9 /* CoreGPX */,
+				606B9C232DA062CE00E25164 /* Sentry */,
 			);
 			productName = GuideDogs;
 			productReference = D3D7CFC81B3D96470020B5E9 /* Soundscape.app */;
@@ -4592,6 +4595,7 @@
 				286145E92625099F000E5525 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				283B0305264B03920092F74F /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				91172A712AD8D56D00E6E8E9 /* XCRemoteSwiftPackageReference "CoreGPX" */,
+				606B9C222DA062CE00E25164 /* XCRemoteSwiftPackageReference "sentry-cocoa" */,
 			);
 			productRefGroup = D3D7CFC91B3D96470020B5E9 /* Products */;
 			projectDirPath = "";
@@ -6027,6 +6031,14 @@
 				version = 10.11.0;
 			};
 		};
+		606B9C222DA062CE00E25164 /* XCRemoteSwiftPackageReference "sentry-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/getsentry/sentry-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.48.0;
+			};
+		};
 		91172A712AD8D56D00E6E8E9 /* XCRemoteSwiftPackageReference "CoreGPX" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vincentneo/CoreGPX.git";
@@ -6087,6 +6099,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 28F1ECE0262505DC00E964C0 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
+		};
+		606B9C232DA062CE00E25164 /* Sentry */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 606B9C222DA062CE00E25164 /* XCRemoteSwiftPackageReference "sentry-cocoa" */;
+			productName = Sentry;
 		};
 		91172A722AD8D56D00E6E8E9 /* CoreGPX */ = {
 			isa = XCSwiftPackageProductDependency;

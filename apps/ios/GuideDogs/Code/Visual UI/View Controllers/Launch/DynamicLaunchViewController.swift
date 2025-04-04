@@ -13,6 +13,8 @@ import AppCenterAnalytics
 import AppCenterCrashes
 import Combine
 
+import Sentry
+
 class DynamicLaunchViewController: UIViewController {
 
     private var validator: TTSVoiceValidator?
@@ -47,6 +49,13 @@ class DynamicLaunchViewController: UIViewController {
             AppCenter.start(withAppSecret: "<#Secret#>", services: [Analytics.self, Crashes.self])
             Analytics.enabled = !SettingsContext.shared.telemetryOptout
             Crashes.enabled = !SettingsContext.shared.telemetryOptout
+            
+            if !SettingsContext.shared.telemetryOptout {
+                SentrySDK.start { options in
+                    options.dsn = "<Your DSN here>"
+                    options.debug = false // Set to true only for local debugging
+                }
+            }
         }
     }
     
